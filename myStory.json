@@ -1,0 +1,58 @@
+{
+    "Title": "Campus Life on the East Side",
+    "Credits": "Created by Aiden Waldorf (atwaldor@ucsc.edu).",
+    "InitialLocation": "Merrill",
+    "Locations": {
+        "Merrill": {
+            "Body": "This is Merrill College, tucked among the redwoods with scenic views of the bay. It's quiet, peaceful, and known for its focus on cultural studies.",
+            "Choices": [
+                {
+                    "Text": "West",
+                    "Target": "C9"
+                },
+                {
+                    "Text": "South",
+                    "Target": "Cowell"
+                }
+            ]
+        },
+        "C9": {
+            "Body": "This is College Nine, focused on global and international perspectives. Surrounded by modern buildings and shaded walkways, it’s a hub for cross-cultural exchange.",
+            "Choices": [
+                {
+                    "Text": "East",
+                    "Target": "Merrill"
+                }
+            ]
+        },
+        "Cowell": {
+            "Body": "Cowell College, the oldest on campus, offers open lawns, ocean views, and a strong sense of community. The sun hits just right here most afternoons.",
+            "Choices": [
+                {
+                    "Text": "North",
+                    "Target": "Merrill"
+                },
+                {
+                    "Text": "South",
+                    "Target": "Gym"
+                }
+            ]
+        },
+        "Gym": {
+            "Body": "The East Field House gym is where students come to sweat, lift, or relax in the pool. The surrounding area still keeps that signature UCSC forest aesthetic.",
+            "Choices": [
+                {
+                    "Text": "North",
+                    "Target": "Cowell"
+                },
+                {
+                    "Text": "South",
+                    "Target": "Beyond"
+                }
+            ]
+        },
+        "Beyond": {
+            "Body": "You’ve wandered beyond the familiar paths—open fields, tall grass, and the ever-present risk of ticks. Proceed only if you're ready to explore the unknown."
+        }
+    }
+}
