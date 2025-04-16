@@ -7,25 +7,17 @@
         "Body": "This is the royal chambers, where your escape begins.",
         "Choices": [
           {
-            "Text": "Sneak out",
-            "Target": "Hall of Ancestors"
-          },
-          {
-            "Text": "Call guards",
+            "Text": "To hall of ancestors",
             "Target": "Hall of Ancestors"
           }
         ]
       },
       "Hall of Ancestors": {
-        "Body": "This is a long hallway filled with portraits and secrets.",
+        "Body": "This is a long hallway filled with portraits and secrets, the Hall of Ancestors.",
         "Choices": [
           {
             "Text": "Continue",
             "Target": "Throne Room"
-          },
-          {
-            "Text": "Backtrack with key",
-            "Target": "Kitchen"
           },
           {
             "Text": "Back",
@@ -34,7 +26,7 @@
         ]
       },
       "Throne Room": {
-        "Body": "This is the main chamber of the castle, now in disarray.",
+        "Body": "This is the main chamber of the castle, now in disarray, the Throne Room.",
         "Choices": [
           {
             "Text": "Enter the Grand Archives",
@@ -47,11 +39,11 @@
         ]
       },
       "Grand Archives": {
-        "Body": "This is the castle's library, filled with ancient knowledge.",
+        "Body": "This is the castle's library, filled with ancient knowledge, the Grand Archives.",
         "Choices": [
           {
             "Text": "Head to Courtyard",
-            "Target": "Courtyard"
+            "Target": "Outdoor Courtyard"
           },
           {
             "Text": "Back",
@@ -59,15 +51,15 @@
           }
         ]
       },
-      "Courtyard": {
-        "Body": "This is an open space with patrolling enemy soldiers.",
+      "Outdoor Courtyard": {
+        "Body": "This is an open space with patrolling enemy soldiers, the Outdoor Courtyard.",
         "Choices": [
           {
-            "Text": "Engage enemies",
-            "Target": "Servants’ Quarters"
+            "Text": "Go to armory",
+            "Target": "Armory"
           },
           {
-            "Text": "Let enemies pass",
+            "Text": "Go to servants’ quarters",
             "Target": "Servants’ Quarters"
           },
           {
@@ -77,24 +69,20 @@
         ]
       },
       "Servants’ Quarters": {
-        "Body": "These are narrow corridors and empty servant rooms.",
+        "Body": "These are narrow corridors and empty servant rooms, the Servants’ Quarters.",
         "Choices": [
-          {
-            "Text": "Enter the Armory",
-            "Target": "Armory"
-          },
           {
             "Text": "Continue to Kitchen",
             "Target": "Kitchen"
           },
           {
             "Text": "Back",
-            "Target": "Courtyard"
+            "Target": "Outdoor Courtyard"
           }
         ]
       },
       "Armory": {
-        "Body": "This is the weapons cache used by royal guards.",
+        "Body": "This is the weapons cache used by royal guards, the Armory.",
         "Choices": [
           {
             "Text": "Proceed to Kitchen",
@@ -102,12 +90,12 @@
           },
           {
             "Text": "Back",
-            "Target": "Servants’ Quarters"
+            "Target": "Outdoor Courtyard"
           }
         ]
       },
       "Kitchen": {
-        "Body": "This is the castle kitchen, warm and full of smells.",
+        "Body": "This is the castle kitchen, warm and full of smells, the Kitchen.",
         "Choices": [
           {
             "Text": "Use secret tunnel",
@@ -122,13 +110,17 @@
             "Target": "Stable Yard"
           },
           {
-            "Text": "Back",
+            "Text": "Back to Servants’ Quarters",
             "Target": "Servants’ Quarters"
+          },
+          {
+            "Text": "Back to Armory",
+            "Target": "Armory"
           }
         ]
       },
       "Garden": {
-        "Body": "This is a quiet, open garden—ideal for stealth.",
+        "Body": "This is a quiet, open garden—ideal for stealth, the Garden.",
         "Choices": [
           {
             "Text": "Escape",
@@ -141,7 +133,7 @@
         ]
       },
       "Stable Yard": {
-        "Body": "This is where the royal horses are kept, and a possible escape.",
+        "Body": "This is where the royal horses are kept, and a possible escape, the Stable Yard.",
         "Choices": [
           {
             "Text": "Escape",
@@ -154,7 +146,7 @@
         ]
       },
       "City Outskirts": {
-        "Body": "You have reached the edge of the city. Your choices have shaped your fate."
+        "Body": "You have reached the edge of the city. Your choices have shaped your fate, the City Outskirts."
       }
     }
   }
