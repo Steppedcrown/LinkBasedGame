@@ -1,58 +1,161 @@
 {
-    "Title": "Campus Life on the East Side",
+    "Title": "Escape from the Falling Kingdom",
     "Credits": "Created by Aiden Waldorf (atwaldor@ucsc.edu).",
-    "InitialLocation": "Merrill",
+    "InitialLocation": "Royal Chambers",
     "Locations": {
-        "Merrill": {
-            "Body": "This is Merrill College, tucked among the redwoods with scenic views of the bay. It's quiet, peaceful, and known for its focus on cultural studies.",
-            "Choices": [
-                {
-                    "Text": "West",
-                    "Target": "C9"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Cowell"
-                }
-            ]
-        },
-        "C9": {
-            "Body": "This is College Nine, focused on global and international perspectives. Surrounded by modern buildings and shaded walkways, it’s a hub for cross-cultural exchange.",
-            "Choices": [
-                {
-                    "Text": "East",
-                    "Target": "Merrill"
-                }
-            ]
-        },
-        "Cowell": {
-            "Body": "Cowell College, the oldest on campus, offers open lawns, ocean views, and a strong sense of community. The sun hits just right here most afternoons.",
-            "Choices": [
-                {
-                    "Text": "North",
-                    "Target": "Merrill"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Gym"
-                }
-            ]
-        },
-        "Gym": {
-            "Body": "The East Field House gym is where students come to sweat, lift, or relax in the pool. The surrounding area still keeps that signature UCSC forest aesthetic.",
-            "Choices": [
-                {
-                    "Text": "North",
-                    "Target": "Cowell"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Beyond"
-                }
-            ]
-        },
-        "Beyond": {
-            "Body": "You’ve wandered beyond the familiar paths—open fields, tall grass, and the ever-present risk of ticks. Proceed only if you're ready to explore the unknown."
-        }
+      "Royal Chambers": {
+        "Body": "This is the royal chambers, where your escape begins.",
+        "Choices": [
+          {
+            "Text": "Sneak out",
+            "Target": "Hall of Ancestors"
+          },
+          {
+            "Text": "Call guards",
+            "Target": "Hall of Ancestors"
+          }
+        ]
+      },
+      "Hall of Ancestors": {
+        "Body": "This is a long hallway filled with portraits and secrets.",
+        "Choices": [
+          {
+            "Text": "Continue",
+            "Target": "Throne Room"
+          },
+          {
+            "Text": "Backtrack with key",
+            "Target": "Kitchen"
+          },
+          {
+            "Text": "Back",
+            "Target": "Royal Chambers"
+          }
+        ]
+      },
+      "Throne Room": {
+        "Body": "This is the main chamber of the castle, now in disarray.",
+        "Choices": [
+          {
+            "Text": "Enter the Grand Archives",
+            "Target": "Grand Archives"
+          },
+          {
+            "Text": "Back",
+            "Target": "Hall of Ancestors"
+          }
+        ]
+      },
+      "Grand Archives": {
+        "Body": "This is the castle's library, filled with ancient knowledge.",
+        "Choices": [
+          {
+            "Text": "Head to Courtyard",
+            "Target": "Courtyard"
+          },
+          {
+            "Text": "Back",
+            "Target": "Throne Room"
+          }
+        ]
+      },
+      "Courtyard": {
+        "Body": "This is an open space with patrolling enemy soldiers.",
+        "Choices": [
+          {
+            "Text": "Engage enemies",
+            "Target": "Servants’ Quarters"
+          },
+          {
+            "Text": "Let enemies pass",
+            "Target": "Servants’ Quarters"
+          },
+          {
+            "Text": "Back",
+            "Target": "Grand Archives"
+          }
+        ]
+      },
+      "Servants’ Quarters": {
+        "Body": "These are narrow corridors and empty servant rooms.",
+        "Choices": [
+          {
+            "Text": "Enter the Armory",
+            "Target": "Armory"
+          },
+          {
+            "Text": "Continue to Kitchen",
+            "Target": "Kitchen"
+          },
+          {
+            "Text": "Back",
+            "Target": "Courtyard"
+          }
+        ]
+      },
+      "Armory": {
+        "Body": "This is the weapons cache used by royal guards.",
+        "Choices": [
+          {
+            "Text": "Proceed to Kitchen",
+            "Target": "Kitchen"
+          },
+          {
+            "Text": "Back",
+            "Target": "Servants’ Quarters"
+          }
+        ]
+      },
+      "Kitchen": {
+        "Body": "This is the castle kitchen, warm and full of smells.",
+        "Choices": [
+          {
+            "Text": "Use secret tunnel",
+            "Target": "City Outskirts"
+          },
+          {
+            "Text": "Go to Garden",
+            "Target": "Garden"
+          },
+          {
+            "Text": "Go to Stables",
+            "Target": "Stable Yard"
+          },
+          {
+            "Text": "Back",
+            "Target": "Servants’ Quarters"
+          }
+        ]
+      },
+      "Garden": {
+        "Body": "This is a quiet, open garden—ideal for stealth.",
+        "Choices": [
+          {
+            "Text": "Escape",
+            "Target": "City Outskirts"
+          },
+          {
+            "Text": "Back",
+            "Target": "Kitchen"
+          }
+        ]
+      },
+      "Stable Yard": {
+        "Body": "This is where the royal horses are kept, and a possible escape.",
+        "Choices": [
+          {
+            "Text": "Escape",
+            "Target": "City Outskirts"
+          },
+          {
+            "Text": "Back",
+            "Target": "Kitchen"
+          }
+        ]
+      },
+      "City Outskirts": {
+        "Body": "You have reached the edge of the city. Your choices have shaped your fate."
+      }
     }
-}
+  }
+  
