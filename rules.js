@@ -87,7 +87,9 @@ class Location extends Scene {
                     //console.log(`Guards decreased by ${choice.loseGuards}. Current guards: ${this.engine.guards}`);
                 }  
                 if (this.engine.guards <= 0) {
-                    this.engine.show(choice.loseText);
+                    this.engine.show(choice.loseGuards.loseText);
+                } else {
+                    this.engine.show(choice.loseGuards.winText);
                 }
             }
             this.engine.gotoScene(Location, choice.Target);

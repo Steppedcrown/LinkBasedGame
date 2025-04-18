@@ -73,8 +73,10 @@
           "Text": "Fight enemies",
           "Target": "Outdoor Courtyard",
           "SetFlag": "killedEnemies",
-          "loseGuards": true,
-          "loseText": "Your guards have been defeated."
+          "loseGuards": {
+              "winText": "You have lost some guards, but won the battle.",
+              "loseText": "Your guards have been defeated."
+            }
         }
       },
       {
@@ -206,7 +208,8 @@
         "Choices": [
           {
             "Text": "Sneak out",
-            "Target": "City Outskirts"
+            "Target": "City Outskirts",
+            "Stealth": true
           },
           {
             "Text": "Back",
@@ -219,7 +222,11 @@
         "Choices": [
           {
             "Text": "Fight your way out",
-            "Target": "City Outskirts"
+            "Target": "City Outskirts",
+            "loseGuards": {
+              "winText": "You have lost some guards, but won the battle.",
+              "loseText": "Your guards have been defeated."
+            }
           },
           {
             "Text": "Back",
