@@ -4,7 +4,7 @@
     "InitialLocation": "Royal Chambers",
     "ConditionalMessages": [
       {
-        "Flag": "calledGuards",
+        "Flag": "calledGuards1",
         "Location": "Royal Chambers",
         "Message": "You hear marching footsteps behind you — the guards you summoned are on their way."
       },
@@ -26,12 +26,12 @@
     ],
     "ConditionalChoices": [
       {
-        "Flag": "noGuards",
+        "Flag": "noGuards1",
         "Location": "Royal Chambers",
         "Choice": {
           "Text": "Call for guards",
           "Target": "Royal Chambers",
-          "SetFlag": "calledGuards"
+          "SetFlag": "calledGuards1"
         }
       },
       {
@@ -52,12 +52,21 @@
         }
       },
       {
-        "Flag": "calledGuards",
+        "Flag": "calledGuards1",
         "Location": "Outdoor Courtyard",
         "Choice": {
           "Text": "Fight enemies",
           "Target": "Outdoor Courtyard",
           "SetFlag": "killedEnemies"
+        }
+      },
+      {
+        "Flag": "noGuards2",
+        "Location": "Armory",
+        "Choice": {
+          "Text": "Call for guards again",
+          "Target": "Armory",
+          "SetFlag": "calledGuards2"
         }
       }
     ],

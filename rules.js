@@ -5,7 +5,8 @@ class Start extends Scene {
         this.engine.addChoice("Begin the story");
         this.engine.flags = {}; // initialize the flags object
         // Set default flags to true
-        this.engine.flags["noGuards"] = true;
+        this.engine.flags["noGuards1"] = true;
+        this.engine.flags["noGuards2"] = true;
     }
 
     handleChoice() {
@@ -33,9 +34,16 @@ class Location extends Scene {
             if (this.engine.flags[c.Flag] && key === c.Location) { // If the flag is set and the location matches
                 if (!this.engine.flags[c.Choice.SetFlag]) { // If the choice does not have a SetFlag property
                     this.engine.addChoice(c.Choice.Text, c.Choice);
+                    console.log(c);
                     break; // Stop after the first match
                 }
             }
+        }
+
+        // Update guard status
+        if (this.engine.flags["calledGuards1"] && this.engine.flags["calledGuards2"] && !this.engine.flags["maxGuards"]) {
+            this.engine.flags["maxGuards"] = true;
+            console.log("You have called the maximum number of guards.");
         }
         
         if(locationData.Choices) { // check if the location has any Choices
