@@ -2,6 +2,51 @@
     "Title": "Escape from the Falling Kingdom",
     "Credits": "Created by Aiden Waldorf (atwaldor@ucsc.edu).",
     "InitialLocation": "Royal Chambers",
+    "ConditionalMessages": [
+      {
+        "Flag": "calledGuards",
+        "Location": "Royal Chambers",
+        "Message": "You hear marching footsteps behind you — the guards you summoned are on their way."
+      },
+      {
+        "Flag": "readNote",
+        "Location": "Grand Archives",
+        "Message": "A note slips out telling you to return to the Hall of Ancestors."
+      },
+      {
+        "Flag": "hasKey",
+        "Location": "Hall of Ancestors",
+        "Message": "You take the hidden key."
+      }
+    ],
+    "ConditionalChoices": [
+      {
+        "Flag": "calledGuards",
+        "Location": "Royal Chambers",
+        "Choice": {
+          "Text": "Call for guards",
+          "Target": "Royal Chambers",
+          "SetFlag": "calledGuards"
+        }
+      },
+      {
+        "Flag": "readNote",
+        "Location": "Hall of Ancestors",
+        "Choice": {
+          "Text": "Take key",
+          "Target": "Hall of Ancestors",
+          "SetFlag": "hasKey"
+        }
+      },
+      {
+        "Flag": "hasKey",
+        "Location": "Kitchen",
+        "Choice": {
+          "Text": "Use the secret tunnel",
+          "Target": "City Outskirts"
+        }
+      }
+    ],
     "Locations": {
       "Royal Chambers": {
         "Body": "This is the royal chambers, where your escape begins.",
@@ -39,8 +84,13 @@
         ]
       },
       "Grand Archives": {
-        "Body": "This is the castle's library, filled with ancient knowledge, the Grand Archives.",
+        "Body": "This is the castle's library, filled with ancient knowledge, the Grand Archives. There is a suspicious book on the table.",
         "Choices": [
+          {
+            "Text": "Open book",
+            "Target": "Grand Archives",
+            "SetFlag": "readNote"
+          },
           {
             "Text": "Head to Courtyard",
             "Target": "Outdoor Courtyard"
@@ -97,10 +147,6 @@
       "Kitchen": {
         "Body": "This is the castle kitchen, warm and full of smells, the Kitchen.",
         "Choices": [
-          {
-            "Text": "Use secret tunnel",
-            "Target": "City Outskirts"
-          },
           {
             "Text": "Go to Garden",
             "Target": "Garden"
