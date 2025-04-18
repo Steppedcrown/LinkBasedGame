@@ -9,7 +9,7 @@ class Start extends Scene {
         // Set default flags to true
         this.engine.flags["noGuards1"] = true;
         this.engine.flags["noGuards2"] = true;
-        //this.engine.flags["hadMaxGuards"] = true;
+        this.engine.flags["noNote"] = true;
     }
 
     handleChoice() {
@@ -20,15 +20,20 @@ class Start extends Scene {
 class Location extends Scene {
     create(key) {
         let locationData = this.engine.storyData.Locations[key]; // use `key` to get the data object for the current story location
-        this.engine.show(locationData.Body); // body of the location data
+        
 
         // Conditional messages
+        let messageShown = false;
         const extraMessages = this.engine.storyData.ConditionalMessages || [];
         for (let msg of extraMessages) {
             if (this.engine.flags[msg.Flag] && key === msg.Location) { // If the flag is set and the location matches
                 this.engine.show(msg.Message);
+                messageShown = true;
                 break; // stop the loop after the first match
             }
+        }
+        if (!messageShown) {
+            this.engine.show(locationData.Body); // body of the location data
         }
 
         // Conditional choices
@@ -46,11 +51,10 @@ class Location extends Scene {
         // Update the guards status
        if (this.engine.guards > 0) {
             this.engine.flags["hasGuards"] = true;
-            console.log(this.engine.guards);
         } else {
-            this.engine.flags["hasGuards"] = true;
-            console.log(this.engine.guards);
+            this.engine.flags["hasGuards"] = false;
         }
+        console.log(this.engine.guards);
         
         if(locationData.Choices) { // check if the location has any Choices
             for(let choice of locationData.Choices) { // loop over the location's Choices
@@ -74,12 +78,17 @@ class Location extends Scene {
             }
 
             // Gain or lose guards if the choice has a GainGuards or LoseGuards property
-            if (choice.loseGuards && this.engine.guards > 0) {
-                this.engine.guards--;
-                //console.log(`Guards decreased by ${choice.loseGuards}. Current guards: ${this.engine.guards}`);
-            } else if (choice.gainGuards) {
+            if (choice.gainGuards) {
                 this.engine.guards++;
-                //console.log(`Guards increased by ${choice.gainGuards}. Current guards: ${this.engine.guards}`);
+                //console.log(`Guards decreased by ${choice.loseGuards}. Current guards: ${this.engine.guards}`);
+            } else if (choice.loseGuards) {
+                if (this.engine.guards > 0) {
+                    this.engine.guards--;
+                    //console.log(`Guards decreased by ${choice.loseGuards}. Current guards: ${this.engine.guards}`);
+                }  
+                if (this.engine.guards <= 0) {
+                    this.engine.show(choice.loseText);
+                }
             }
             this.engine.gotoScene(Location, choice.Target);
         } else {

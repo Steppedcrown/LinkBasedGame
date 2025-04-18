@@ -6,7 +6,7 @@
       {
         "Flag": "calledGuards1",
         "Location": "Royal Chambers",
-        "Message": "You hear marching footsteps behind you — the guards you summoned are on their way."
+        "Message": "You hear marching footsteps behind you — the guards you summoned are on their way to the Royal Chambers to assist you."
       },
       {
         "Flag": "readNote",
@@ -21,12 +21,12 @@
       {
         "Flag": "killedEnemies",
         "Location": "Outdoor Courtyard",
-        "Message": "You have defeated the enemies."
+        "Message": "You have defeated the enemies once patrolling the courtyard."
       },
       {
         "Flag": "calledGuards2",
         "Location": "Armory",
-        "Message": "You hear marching footsteps behind you — the guards you summoned are on their way."
+        "Message": "You gather the few guards left in the armory."
       }
     ],
     "ConditionalChoices": [
@@ -38,6 +38,15 @@
           "Target": "Royal Chambers",
           "SetFlag": "calledGuards1",
           "gainGuards": true
+        }
+      },
+      {
+        "Flag": "noNote",
+        "Location": "Grand Archives",
+        "Choice": {
+          "Text": "Open book",
+          "Target": "Grand Archives",
+          "SetFlag": "readNote"
         }
       },
       {
@@ -64,7 +73,8 @@
           "Text": "Fight enemies",
           "Target": "Outdoor Courtyard",
           "SetFlag": "killedEnemies",
-          "loseGuards": true
+          "loseGuards": true,
+          "loseText": "Your guards have been defeated."
         }
       },
       {
@@ -117,11 +127,6 @@
       "Grand Archives": {
         "Body": "This is the castle's library, filled with ancient knowledge, the Grand Archives. There is a suspicious book on the table.",
         "Choices": [
-          {
-            "Text": "Open book",
-            "Target": "Grand Archives",
-            "SetFlag": "readNote"
-          },
           {
             "Text": "Head to Courtyard",
             "Target": "Outdoor Courtyard"
