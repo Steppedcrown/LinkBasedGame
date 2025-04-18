@@ -4,6 +4,8 @@ class Start extends Scene {
         this.engine.setTitle(this.engine.storyData.Title); // find the story title
         this.engine.addChoice("Begin the story");
         this.engine.flags = {}; // initialize the flags object
+        // Set default flags to true
+        this.engine.flags["noGuards"] = true;
     }
 
     handleChoice() {
@@ -30,7 +32,6 @@ class Location extends Scene {
         for (let c of extraChoices) {
             if (this.engine.flags[c.Flag] && key === c.Location) { // If the flag is set and the location matches
                 if (!this.engine.flags[c.Choice.SetFlag]) {
-                    console.log("displalying choie");
                     this.engine.addChoice(c.Choice.Text, c.Choice);
                     break; // Stop after the first match
                 }

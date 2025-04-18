@@ -17,11 +17,16 @@
         "Flag": "hasKey",
         "Location": "Hall of Ancestors",
         "Message": "You take the hidden key."
+      },
+      {
+        "Flag": "killedEnemies",
+        "Location": "Outdoor Courtyard",
+        "Message": "You have defeated the enemies."
       }
     ],
     "ConditionalChoices": [
       {
-        "Flag": "calledGuards",
+        "Flag": "noGuards",
         "Location": "Royal Chambers",
         "Choice": {
           "Text": "Call for guards",
@@ -44,6 +49,15 @@
         "Choice": {
           "Text": "Use the secret tunnel",
           "Target": "City Outskirts"
+        }
+      },
+      {
+        "Flag": "calledGuards",
+        "Location": "Outdoor Courtyard",
+        "Choice": {
+          "Text": "Fight enemies",
+          "Target": "Outdoor Courtyard",
+          "SetFlag": "killedEnemies"
         }
       }
     ],
