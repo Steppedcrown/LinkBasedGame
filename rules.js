@@ -61,7 +61,8 @@ class Location extends Scene {
                 this.engine.addChoice(choice.Text, choice); // use the Text of the choice
                 // add a useful second argument to addChoice so that the current code of handleChoice below works
             }
-        } else {
+        } else { // Display final game details
+            this.engine.show("You have escaped the city with " + this.engine.guards + " groups of guards.");
             this.engine.addChoice("The end.")
         }
     }
