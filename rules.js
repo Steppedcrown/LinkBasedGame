@@ -3,10 +3,13 @@ class Start extends Scene {
     create() {
         this.engine.setTitle(this.engine.storyData.Title); // find the story title
         this.engine.addChoice("Begin the story");
+        this.engine.guards = 0; // initialize the guards counter
         this.engine.flags = {}; // initialize the flags object
+
         // Set default flags to true
         this.engine.flags["noGuards1"] = true;
         this.engine.flags["noGuards2"] = true;
+        //this.engine.flags["hadMaxGuards"] = true;
     }
 
     handleChoice() {
@@ -40,10 +43,13 @@ class Location extends Scene {
             }
         }
 
-        // Update guard status
-        if (this.engine.flags["calledGuards1"] && this.engine.flags["calledGuards2"] && !this.engine.flags["maxGuards"]) {
-            this.engine.flags["maxGuards"] = true;
-            console.log("You have called the maximum number of guards.");
+        // Update the guards status
+       if (this.engine.guards > 0) {
+            this.engine.flags["hasGuards"] = true;
+            console.log(this.engine.guards);
+        } else {
+            this.engine.flags["hasGuards"] = true;
+            console.log(this.engine.guards);
         }
         
         if(locationData.Choices) { // check if the location has any Choices
@@ -67,6 +73,14 @@ class Location extends Scene {
                 //console.log(`Flag ${choice.SetFlag} set to ${this.engine.flags[choice.SetFlag]}`);
             }
 
+            // Gain or lose guards if the choice has a GainGuards or LoseGuards property
+            if (choice.loseGuards && this.engine.guards > 0) {
+                this.engine.guards--;
+                //console.log(`Guards decreased by ${choice.loseGuards}. Current guards: ${this.engine.guards}`);
+            } else if (choice.gainGuards) {
+                this.engine.guards++;
+                //console.log(`Guards increased by ${choice.gainGuards}. Current guards: ${this.engine.guards}`);
+            }
             this.engine.gotoScene(Location, choice.Target);
         } else {
             this.engine.gotoScene(End);

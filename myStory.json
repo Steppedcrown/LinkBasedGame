@@ -22,6 +22,11 @@
         "Flag": "killedEnemies",
         "Location": "Outdoor Courtyard",
         "Message": "You have defeated the enemies."
+      },
+      {
+        "Flag": "calledGuards2",
+        "Location": "Armory",
+        "Message": "You hear marching footsteps behind you — the guards you summoned are on their way."
       }
     ],
     "ConditionalChoices": [
@@ -31,7 +36,8 @@
         "Choice": {
           "Text": "Call for guards",
           "Target": "Royal Chambers",
-          "SetFlag": "calledGuards1"
+          "SetFlag": "calledGuards1",
+          "gainGuards": true
         }
       },
       {
@@ -52,12 +58,13 @@
         }
       },
       {
-        "Flag": "calledGuards1",
+        "Flag": "hasGuards",
         "Location": "Outdoor Courtyard",
         "Choice": {
           "Text": "Fight enemies",
           "Target": "Outdoor Courtyard",
-          "SetFlag": "killedEnemies"
+          "SetFlag": "killedEnemies",
+          "loseGuards": true
         }
       },
       {
@@ -66,7 +73,8 @@
         "Choice": {
           "Text": "Call for guards again",
           "Target": "Armory",
-          "SetFlag": "calledGuards2"
+          "SetFlag": "calledGuards2",
+          "gainGuards": true
         }
       }
     ],
@@ -192,7 +200,7 @@
         "Body": "This is a quiet, open garden—ideal for stealth, the Garden.",
         "Choices": [
           {
-            "Text": "Escape",
+            "Text": "Sneak out",
             "Target": "City Outskirts"
           },
           {
@@ -205,7 +213,7 @@
         "Body": "This is where the royal horses are kept, and a possible escape, the Stable Yard.",
         "Choices": [
           {
-            "Text": "Escape",
+            "Text": "Fight your way out",
             "Target": "City Outskirts"
           },
           {
