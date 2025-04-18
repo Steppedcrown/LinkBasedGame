@@ -31,7 +31,7 @@ class Location extends Scene {
         const extraChoices = this.engine.storyData.ConditionalChoices || [];
         for (let c of extraChoices) {
             if (this.engine.flags[c.Flag] && key === c.Location) { // If the flag is set and the location matches
-                if (!this.engine.flags[c.Choice.SetFlag]) {
+                if (!this.engine.flags[c.Choice.SetFlag]) { // If the choice does not have a SetFlag property
                     this.engine.addChoice(c.Choice.Text, c.Choice);
                     break; // Stop after the first match
                 }
@@ -51,6 +51,7 @@ class Location extends Scene {
     handleChoice(choice) {
         if(choice) {
             this.engine.show("&gt; "+choice.Text);
+            this.engine.show("<br>");
 
             // Set boolean flags if the choice has a SetFlag property
             if (choice.SetFlag) {
