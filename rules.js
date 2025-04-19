@@ -92,6 +92,13 @@ class Location extends Scene {
                 } else {
                     this.engine.show(choice.loseGuards.winText);
                 }
+            } else if (choice.stealthCheck) {
+                if (this.engine.guards > 0) {
+                    this.engine.guards--;
+                    this.engine.show(choice.stealthCheck.failText);
+                } else {
+                    this.engine.show(choice.stealthCheck.passText);
+                }
             }
             this.engine.gotoScene(Location, choice.Target);
         } else {

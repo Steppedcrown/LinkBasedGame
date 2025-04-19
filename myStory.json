@@ -209,7 +209,10 @@
           {
             "Text": "Sneak out",
             "Target": "City Outskirts",
-            "Stealth": true
+            "stealthCheck": {
+              "passText": "You have successfully snuck out of the castle.",
+              "failText": "You have been caught by the guards and must fight them to escape."
+            }
           },
           {
             "Text": "Back",
