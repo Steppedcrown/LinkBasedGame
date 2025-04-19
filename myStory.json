@@ -2,6 +2,7 @@
     "Title": "Escape from the Falling Kingdom",
     "Credits": "Created by Aiden Waldorf (atwaldor@ucsc.edu).",
     "InitialLocation": "Royal Chambers",
+    "CapturedMessage": "You foolishly tried to fight enemies without guards and were captured by the enemies.",
     "ConditionalMessages": [
       {
         "Flag": "calledGuards1",
@@ -67,7 +68,7 @@
         }
       },
       {
-        "Flag": "hasGuards",
+        "Flag": "courtEnemies",
         "Location": "Outdoor Courtyard",
         "Choice": {
           "Text": "Fight enemies",
