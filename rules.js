@@ -4,6 +4,7 @@ class Start extends Scene {
         this.engine.setTitle(this.engine.storyData.Title); // find the story title
         this.engine.addChoice("Begin the story");
         this.engine.guards = 0; // initialize the guards counter
+        this.engine.maxGuards = 2; // max guards
         this.engine.defeatedEnemies = 0; // initialize the defeated enemies counter
         this.engine.maxEnemies = 2; // max enemy encounters
         this.engine.captured = false; // initialize captured tracker
@@ -29,12 +30,17 @@ class Location extends Scene {
         if (!this.engine.captured) {
             // Conditional messages
             let messageShown = false;
-            const extraMessages = this.engine.storyData.ConditionalMessages || [];
-            for (let msg of extraMessages) {
-                if (this.engine.flags[msg.Flag] && key === msg.Location) { // If the flag is set and the location matches
-                    this.engine.show(msg.Message); // display conditional message
-                    messageShown = true; // register that a message of shown
-                    break; // stop the loop after the first match
+            if (!key.hasEnemies && key.clearText) { // If the location has no enemies and a clearText property
+                this.engine.show(key.clearText); // show the clear text if the location has no enemies
+                messageShown = true; // register that a message of shown
+            } else {
+                const extraMessages = this.engine.storyData.ConditionalMessages || [];
+                for (let msg of extraMessages) {
+                    if (this.engine.flags[msg.Flag] && key === msg.Location) { // If the flag is set and the location matches
+                        this.engine.show(msg.Message); // display conditional message
+                        messageShown = true; // register that a message of shown
+                        break; // stop the loop after the first match
+                    }
                 }
             }
             if (!messageShown) {
@@ -86,6 +92,9 @@ class Location extends Scene {
                 if (this.engine.guards > 0) { // if player has guards
                     this.engine.guards--; // lose some guards
                     this.engine.defeatedEnemies++; // and defeat the enemies
+                    if (choice.Target.hasEnemies) { // if the target location exists
+                        choice.Target.hasEnemies = false; // set the hasEnemies property to false
+                    }
                     //console.log(`Guards decreased by ${choice.loseGuards}. Current guards: ${this.engine.guards}`);
                 } else { // If player has no guards, get captured, display message, end stats, and goto end
                     this.engine.show(this.engine.storyData.CapturedMessage);
@@ -99,7 +108,7 @@ class Location extends Scene {
                         this.engine.show(choice.loseGuards.winText); // otherwise show that they defeated the enemies with only some casualties
                     }
                 }
-            } else if (choice.stealthCheck) { // if there is a stealth check on current choice
+            } else if (choice.stealthCheck && choice.Target.hasEnemies) { // if there is a stealth check on current choice and the zone has enemies
                 if (this.engine.guards > 0) { // and player has guards
                     this.engine.guards--; // lose guards
                     this.engine.show(choice.stealthCheck.failText); // and fail stealth check and fight enemies to escape
@@ -115,9 +124,10 @@ class Location extends Scene {
 
     endstats() {
         this.engine.show(
-            "You have escaped the city with " + this.engine.guards + " groups of guards " +
-            "and you defeated " + this.engine.defeatedEnemies + " enemies, leaving " +
-            (this.engine.maxEnemies - this.engine.defeatedEnemies) + " group to take the castle."
+            "You have escaped the city with " + this.engine.guards + " guards by your side, abandoning " +
+            (this.engine.maxGuards - this.engine.guards) + " guards in the castle. " +
+            "You defeated " + this.engine.defeatedEnemies + " enemies patrols, leaving " +
+            (this.engine.maxEnemies - this.engine.defeatedEnemies) + " to take the castle."
         );
     }
 }

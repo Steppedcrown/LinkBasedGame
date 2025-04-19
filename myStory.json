@@ -1,246 +1,259 @@
 {
-    "Title": "Escape from the Falling Kingdom",
-    "Credits": "Created by Aiden Waldorf (atwaldor@ucsc.edu).",
-    "InitialLocation": "Royal Chambers",
-    "CapturedMessage": "You foolishly tried to fight enemies without guards and were captured by the enemies.",
-    "ConditionalMessages": [
-      {
-        "Flag": "calledGuards1",
-        "Location": "Royal Chambers",
-        "Message": "You hear marching footsteps behind you — the guards you summoned are on their way to the Royal Chambers to assist you."
-      },
-      {
-        "Flag": "readNote",
-        "Location": "Grand Archives",
-        "Message": "A note slips out telling you to return to the Hall of Ancestors."
-      },
-      {
-        "Flag": "hasKey",
-        "Location": "Hall of Ancestors",
-        "Message": "You take the hidden key."
-      },
-      {
-        "Flag": "killedEnemies",
-        "Location": "Outdoor Courtyard",
-        "Message": "You have defeated the enemies once patrolling the courtyard."
-      },
-      {
-        "Flag": "calledGuards2",
-        "Location": "Armory",
-        "Message": "You gather the few guards left in the armory."
+  "Title": "Escape from the Fallen Kingdom",
+  "Credits": "A story written and coded by Aiden Waldorf (atwaldor@ucsc.edu).",
+  "InitialLocation": "Royal Chambers",
+  "CapturedMessage": "Without protection, you were overwhelmed and captured by enemy forces as the castle fell into chaos.",
+  "ConditionalMessages": [
+    {
+      "Flag": "calledGuards1",
+      "Location": "Royal Chambers",
+      "Message": "Velvet curtains blow in the wind as distant shouts echo through the halls. You realize this is no longer a sanctuary as the sound of armored boots echo through the halls — loyal guards rally to your call."
+    },
+    {
+      "Flag": "readNote",
+      "Location": "Grand Archives",
+      "Message": "Shelves reach the vaulted ceiling, packed with forbidden histories. You shudden at the thought of all this knowledge turning to ash at the hands of your invaders. A weathered note slips from between the pages of the tome: “The old kings of the castle harbor a key, used by sneaky servants and spies.”"
+    },
+    {
+      "Flag": "hasKey",
+      "Location": "Hall of Ancestors",
+      "Message": "Portraits of kings and queens line the shadowed corridor. Your hand brushes a hidden compartment beneath a faded portrait of your grandfather. Inside lies a cold iron key — the way out."
+    },
+    {
+      "Flag": "killedEnemies",
+      "Location": "Outdoor Courtyard",
+      "Message": "The courtyard lies eerily still — the enemy patrol has been vanquished."
+    },
+    {
+      "Flag": "calledGuards2",
+      "Location": "Armory",
+      "Message": "Steel glints in the dim light. Racks of weapons and armor stand ready for their last stand. You rally the last remaining soldiers — battered but ready to fight for their prince."
+    }
+  ],
+  "ConditionalChoices": [
+    {
+      "Flag": "noGuards1",
+      "Location": "Royal Chambers",
+      "Choice": {
+        "Text": "Call for the royal guard",
+        "Target": "Royal Chambers",
+        "SetFlag": "calledGuards1",
+        "gainGuards": true
       }
-    ],
-    "ConditionalChoices": [
-      {
-        "Flag": "noGuards1",
-        "Location": "Royal Chambers",
-        "Choice": {
-          "Text": "Call for guards",
-          "Target": "Royal Chambers",
-          "SetFlag": "calledGuards1",
-          "gainGuards": true
-        }
-      },
-      {
-        "Flag": "noNote",
-        "Location": "Grand Archives",
-        "Choice": {
-          "Text": "Open book",
-          "Target": "Grand Archives",
-          "SetFlag": "readNote"
-        }
-      },
-      {
-        "Flag": "readNote",
-        "Location": "Hall of Ancestors",
-        "Choice": {
-          "Text": "Take key",
-          "Target": "Hall of Ancestors",
-          "SetFlag": "hasKey"
-        }
-      },
-      {
-        "Flag": "hasKey",
-        "Location": "Kitchen",
-        "Choice": {
-          "Text": "Use the secret tunnel",
-          "Target": "City Outskirts"
-        }
-      },
-      {
-        "Flag": "courtEnemies",
-        "Location": "Outdoor Courtyard",
-        "Choice": {
-          "Text": "Fight enemies",
-          "Target": "Outdoor Courtyard",
-          "SetFlag": "killedEnemies",
-          "loseGuards": {
-              "winText": "You have lost some guards, but won the battle.",
-              "loseText": "Your guards have been defeated."
-            }
-        }
-      },
-      {
-        "Flag": "noGuards2",
-        "Location": "Armory",
-        "Choice": {
-          "Text": "Call for guards again",
-          "Target": "Armory",
-          "SetFlag": "calledGuards2",
-          "gainGuards": true
+    },
+    {
+      "Flag": "noNote",
+      "Location": "Grand Archives",
+      "Choice": {
+        "Text": "Examine the ancient tome",
+        "Target": "Grand Archives",
+        "SetFlag": "readNote"
+      }
+    },
+    {
+      "Flag": "readNote",
+      "Location": "Hall of Ancestors",
+      "Choice": {
+        "Text": "Retrieve the hidden key",
+        "Target": "Hall of Ancestors",
+        "SetFlag": "hasKey"
+      }
+    },
+    {
+      "Flag": "hasKey",
+      "Location": "Servants’ Quarters",
+      "Choice": {
+        "Text": "Slip out through the hidden tunnel",
+        "Target": "City Outskirts"
+      }
+    },
+    {
+      "Flag": "courtEnemies",
+      "Location": "Outdoor Courtyard",
+      "Choice": {
+        "Text": "Engage the enemy patrol",
+        "Target": "Outdoor Courtyard",
+        "SetFlag": "killedEnemies",
+        "loseGuards": {
+          "winText": "Victory comes at a cost — some of your guards lie wounded, but the path is clear.",
+          "loseText": "Your last line of defense is gone — the guards are defeated."
         }
       }
-    ],
-    "Locations": {
-      "Royal Chambers": {
-        "Body": "This is the royal chambers, where your escape begins.",
-        "Choices": [
-          {
-            "Text": "To hall of ancestors",
-            "Target": "Hall of Ancestors"
-          }
-        ]
-      },
-      "Hall of Ancestors": {
-        "Body": "This is a long hallway filled with portraits and secrets, the Hall of Ancestors.",
-        "Choices": [
-          {
-            "Text": "Continue",
-            "Target": "Throne Room"
-          },
-          {
-            "Text": "Back",
-            "Target": "Royal Chambers"
-          }
-        ]
-      },
-      "Throne Room": {
-        "Body": "This is the main chamber of the castle, now in disarray, the Throne Room.",
-        "Choices": [
-          {
-            "Text": "Enter the Grand Archives",
-            "Target": "Grand Archives"
-          },
-          {
-            "Text": "Back",
-            "Target": "Hall of Ancestors"
-          }
-        ]
-      },
-      "Grand Archives": {
-        "Body": "This is the castle's library, filled with ancient knowledge, the Grand Archives. There is a suspicious book on the table.",
-        "Choices": [
-          {
-            "Text": "Head to Courtyard",
-            "Target": "Outdoor Courtyard"
-          },
-          {
-            "Text": "Back",
-            "Target": "Throne Room"
-          }
-        ]
-      },
-      "Outdoor Courtyard": {
-        "Body": "This is an open space with patrolling enemy soldiers, the Outdoor Courtyard.",
-        "Choices": [
-          {
-            "Text": "Go to armory",
-            "Target": "Armory"
-          },
-          {
-            "Text": "Go to servants’ quarters",
-            "Target": "Servants’ Quarters"
-          },
-          {
-            "Text": "Back",
-            "Target": "Grand Archives"
-          }
-        ]
-      },
-      "Servants’ Quarters": {
-        "Body": "These are narrow corridors and empty servant rooms, the Servants’ Quarters.",
-        "Choices": [
-          {
-            "Text": "Continue to Kitchen",
-            "Target": "Kitchen"
-          },
-          {
-            "Text": "Back",
-            "Target": "Outdoor Courtyard"
-          }
-        ]
-      },
-      "Armory": {
-        "Body": "This is the weapons cache used by royal guards, the Armory.",
-        "Choices": [
-          {
-            "Text": "Proceed to Kitchen",
-            "Target": "Kitchen"
-          },
-          {
-            "Text": "Back",
-            "Target": "Outdoor Courtyard"
-          }
-        ]
-      },
-      "Kitchen": {
-        "Body": "This is the castle kitchen, warm and full of smells, the Kitchen.",
-        "Choices": [
-          {
-            "Text": "Go to Garden",
-            "Target": "Garden"
-          },
-          {
-            "Text": "Go to Stables",
-            "Target": "Stable Yard"
-          },
-          {
-            "Text": "Back to Servants’ Quarters",
-            "Target": "Servants’ Quarters"
-          },
-          {
-            "Text": "Back to Armory",
-            "Target": "Armory"
-          }
-        ]
-      },
-      "Garden": {
-        "Body": "This is a quiet, open garden—ideal for stealth, the Garden.",
-        "Choices": [
-          {
-            "Text": "Sneak out",
-            "Target": "City Outskirts",
-            "stealthCheck": {
-              "passText": "You have successfully snuck out of the castle.",
-              "failText": "You have been caught by the guards and must fight them to escape."
-            }
-          },
-          {
-            "Text": "Back",
-            "Target": "Kitchen"
-          }
-        ]
-      },
-      "Stable Yard": {
-        "Body": "This is where the royal horses are kept, and a possible escape, the Stable Yard.",
-        "Choices": [
-          {
-            "Text": "Fight your way out",
-            "Target": "City Outskirts",
-            "loseGuards": {
-              "winText": "You have lost some guards, but won the battle.",
-              "loseText": "Your guards have been defeated."
-            }
-          },
-          {
-            "Text": "Back",
-            "Target": "Kitchen"
-          }
-        ]
-      },
-      "City Outskirts": {
-        "Body": "You have reached the edge of the city. Your choices have shaped your fate, the City Outskirts."
+    },
+    {
+      "Flag": "noGuards2",
+      "Location": "Armory",
+      "Choice": {
+        "Text": "Summon remaining reinforcements",
+        "Target": "Armory",
+        "SetFlag": "calledGuards2",
+        "gainGuards": true
       }
     }
+  ],
+  "Locations": {
+    "Royal Chambers": {
+      "Body": "Velvet curtains blow in the wind as distant shouts echo through the halls. This is your sanctuary no longer — the Royal Chambers are the start of your flight. Looking out the window, you see the enemy forces gathering below, the flaming remains of your family's kingdom at their backs.",
+      "Choices": [
+        {
+          "Text": "Hurry to the Hall of Ancestors",
+          "Target": "Hall of Ancestors"
+        }
+      ]
+    },
+    "Hall of Ancestors": {
+      "Body": "Portraits of kings and queens line the shadowed corridor. Secrets whisper from every frame — this is the Hall of Ancestors. You can feel the weight of their legacy pressing down on you, urging you to survive.",
+      "Choices": [
+        {
+          "Text": "Move toward the Throne Room",
+          "Target": "Throne Room"
+        },
+        {
+          "Text": "Return to Royal Chambers",
+          "Target": "Royal Chambers"
+        }
+      ]
+    },
+    "Throne Room": {
+      "Body": "Once a seat of power, now left empty. The sounds of soldiers yelling and swords clashing echo closer with each breath.",
+      "Choices": [
+        {
+          "Text": "Step into the Grand Archives",
+          "Target": "Grand Archives"
+        },
+        {
+          "Text": "Back to the Hall of Ancestors",
+          "Target": "Hall of Ancestors"
+        }
+      ]
+    },
+    "Grand Archives": {
+      "Body": "Shelves reach the vaulted ceiling, packed with forbidden histories. You shudden at the thought of all this knowledge turning to ash at the hands of your invaders. A single tome lies suspiciously untouched on a pedestal.",
+      "Choices": [
+        {
+          "Text": "Head to the Outdoor Courtyard",
+          "Target": "Outdoor Courtyard"
+        },
+        {
+          "Text": "Return to the Throne Room",
+          "Target": "Throne Room"
+        }
+      ]
+    },
+    "Outdoor Courtyard": {
+      "Body": "Moonlight reveals enemy silhouettes pacing among broken fountains and scattered leaves. The Outdoor Courtyard is a gauntlet.",
+      "Choices": [
+        {
+          "Text": "Sneak to the Armory",
+          "Target": "Armory",
+          "stealthCheck": {
+            "passText": "You move silently around the fountain, slipping past the patrolling guards unnoticed.",
+            "failText": "A twig snaps. Shouts ring out. Your guards armor clatters. You’re forced to fight your way through the courtyard, but you make it."
+          }
+        },
+        {
+          "Text": "Sneak toward the Servants’ Quarters",
+          "Target": "Servants’ Quarters",
+          "stealthCheck": {
+            "passText": "You move silently around the fountain, slipping past the patrolling guards unnoticed.",
+            "failText": "A twig snaps. Shouts ring out. Your guards armor clatters. You’re forced to fight your way through the courtyard, but you survive."
+          }
+        },
+        {
+          "Text": "Back to Grand Archives",
+          "Target": "Grand Archives"
+        }
+      ],
+      "clearText": "The courtyard lies eerily still — the enemy patrol has been vanquished.",
+      "hasEnemies": true
+    },
+    "Servants’ Quarters": {
+      "Body": "The scent of old stew lingers in these narrow halls — the forgotten paths of servants and spies alike.",
+      "Choices": [
+        {
+          "Text": "Head into the Kitchen",
+          "Target": "Kitchen"
+        },
+        {
+          "Text": "Back to Courtyard",
+          "Target": "Outdoor Courtyard"
+        }
+      ]
+    },
+    "Armory": {
+      "Body": "Steel glints in the dim light. Racks of weapons and armor stand ready for their last stand.",
+      "Choices": [
+        {
+          "Text": "Exit to Kitchen",
+          "Target": "Kitchen"
+        },
+        {
+          "Text": "Back to the Courtyard",
+          "Target": "Outdoor Courtyard"
+        }
+      ]
+    },
+    "Kitchen": {
+      "Body": "The warmth of the hearth has faded. Knives glisten on the counter — this is the Kitchen, and perhaps your last turn before escape.",
+      "Choices": [
+        {
+          "Text": "Slip into the Garden",
+          "Target": "Garden"
+        },
+        {
+          "Text": "Make for the Stable Yard",
+          "Target": "Stable Yard"
+        },
+        {
+          "Text": "Back to Servants’ Quarters",
+          "Target": "Servants’ Quarters"
+        },
+        {
+          "Text": "Back to Armory",
+          "Target": "Armory"
+        }
+      ]
+    },
+    "Garden": {
+      "Body": "Moonlit hedges cast long shadows as smoke billows over the treeline. This quiet garden could be your safest way out — or your grave.",
+      "Choices": [
+        {
+          "Text": "Sneak through the garden gate",
+          "Target": "City Outskirts",
+          "stealthCheck": {
+            "passText": "You move silently beneath the hedges, slipping past the final guards unnoticed.",
+            "failText": "A twig snaps. Shouts ring out. Your guards armor clatters. You’re forced to fight your way through the garden gate."
+          }
+        },
+        {
+          "Text": "Back to Kitchen",
+          "Target": "Kitchen"
+        }
+      ],
+      "clearText": "The garden lies eerily still — the enemy patrol has been vanquished.",
+      "hasEnemies": true
+    },
+    "Stable Yard": {
+      "Body": "The scent of hay and panic fills the air. War horses neigh in fear — this may be your last gallop to freedom, but the enemy patrol stands in your way.",
+      "Choices": [
+        {
+          "Text": "Ride through the enemy line",
+          "Target": "City Outskirts",
+          "loseGuards": {
+            "winText": "Your guards charge ahead, clearing a bloody path. You ride out with them under a storm of arrows.",
+            "loseText": "Your guards charge ahead, clearing a bloody path. They all die to allow you to slip out under a storm of arrows."
+          }
+        },
+        {
+          "Text": "Back to Kitchen",
+          "Target": "Kitchen"
+        }
+      ],
+      "clearText": "The scent of hay and panic fills the air. The stables lie eerily still — the enemy patrol has been vanquished.",
+      "hasEnemies": true
+    },
+    "City Outskirts": {
+      "Body": "The castle smolders behind you. Whether by blade, key, or silence — you have escaped. What becomes of the kingdom now lies in fate’s hands."
+    }
   }
-  
+}
