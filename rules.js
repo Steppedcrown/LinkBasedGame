@@ -128,7 +128,7 @@ class Location extends Scene {
         this.engine.show(
             "You have escaped the city with " + this.engine.guards + " guards by your side, abandoning " +
             (this.engine.maxGuards - this.engine.totalGuards) + " guards in the castle. " +
-            "You defeated " + this.engine.defeatedEnemies + " enemies patrols, leaving " +
+            "You defeated " + this.engine.defeatedEnemies + " enemy patrols, leaving " +
             (this.engine.maxEnemies - this.engine.defeatedEnemies) + " to take the castle."
         );
     }

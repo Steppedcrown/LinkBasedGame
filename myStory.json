@@ -63,7 +63,7 @@
       "Flag": "hasKey",
       "Location": "Servants’ Quarters",
       "Choice": {
-        "Text": "Slip out through the hidden tunnel",
+        "Text": "Use the key to slip out through the hidden tunnel",
         "Target": "City Outskirts"
       }
     },
