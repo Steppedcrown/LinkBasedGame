@@ -27,13 +27,15 @@ class Start extends Scene {
 class Location extends Scene {
     create(key) {
         let locationData = this.engine.storyData.Locations[key]; // use `key` to get the data object for the current story location
+        this.engine.currentLocationKey = key; // store the current location key
         
         if (!this.engine.captured) {
             // Conditional messages
             let messageShown = false;
-            if (!key.hasEnemies && key.clearText) { // If the location has no enemies and a clearText property
-                this.engine.show(key.clearText); // show the clear text if the location has no enemies
+            if (!locationData.hasEnemies && locationData.clearText) { // If the location has no enemies and a clearText property
+                this.engine.show(locationData.clearText); // show the clear text if the location has no enemies
                 messageShown = true; // register that a message of shown
+                locationData.clearTextShown = true; // register that the clear text has been shown
             } else {
                 const extraMessages = this.engine.storyData.ConditionalMessages || [];
                 for (let msg of extraMessages) {
@@ -53,7 +55,7 @@ class Location extends Scene {
             const extraChoices = this.engine.storyData.ConditionalChoices || [];
             for (let c of extraChoices) {
                 if (this.engine.flags[c.Flag] && key === c.Location) { // If the flag is set and the location matches
-                    if (!this.engine.flags[c.Choice.SetFlag]) { // If the choice does not have a SetFlag property
+                    if (!this.engine.flags[c.Choice.SetFlag] && !locationData.clearTextShown) { // If the choice does not have a SetFlag property
                         this.engine.addChoice(c.Choice.Text, c.Choice); // add found choice
                         //console.log(c);
                         break; // Stop after the first match
@@ -75,6 +77,9 @@ class Location extends Scene {
     }
 
     handleChoice(choice) {
+        let currentLocationData = this.engine.storyData.Locations[this.engine.currentLocationKey]; // Get the current location data
+        //console.log(currentLocationData);
+
         if(choice) {
             this.engine.show("&gt; "+choice.Text);
             this.engine.show("<br>");
@@ -111,11 +116,13 @@ class Location extends Scene {
                     }
                 }
             } else if (choice.stealthCheck) { // if there is a stealth check on current choice and the zone has enemies
-                if (this.engine.guards > 0 && choice.Target.hasEnemies) { // and player has guards
-                    this.engine.guards--; // lose guards
-                    this.engine.show(choice.stealthCheck.failText); // and fail stealth check and fight enemies to escape
+                if (this.engine.guards > 0 && currentLocationData.hasEnemies) {
+                    this.engine.guards--;
+                    this.engine.defeatedEnemies++;
+                    currentLocationData.hasEnemies = false;
+                    this.engine.show(choice.stealthCheck.failText);
                 } else {
-                    this.engine.show(choice.stealthCheck.passText); // otherwise pass undetected
+                    this.engine.show(choice.stealthCheck.passText);
                 }
             }
             this.engine.gotoScene(Location, choice.Target); // go to next location if one exists

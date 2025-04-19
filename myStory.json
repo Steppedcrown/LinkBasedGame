@@ -147,16 +147,16 @@
           "Text": "Sneak to the Armory",
           "Target": "Armory",
           "stealthCheck": {
-            "passText": "You move silently around the fountain, slipping past the patrolling guards unnoticed.",
-            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. You’re forced to fight your way through the courtyard, but you make it."
+            "passText": "You move silently around the fountain, slipping into the armory unnoticed.",
+            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. They're forced to fight through the courtyard and die, but you make it."
           }
         },
         {
           "Text": "Sneak toward the Servants’ Quarters",
           "Target": "Servants’ Quarters",
           "stealthCheck": {
-            "passText": "You move silently around the fountain, slipping past the patrolling guards unnoticed.",
-            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. You’re forced to fight your way through the courtyard, but you survive."
+            "passText": "You move silently around the fountain, slipping into the servants' quarters unnoticed.",
+            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. They're forced to fight through the courtyard and die, but you make it."
           }
         },
         {
@@ -165,6 +165,7 @@
         }
       ],
       "clearText": "The courtyard lies eerily still — the enemy patrol has been vanquished.",
+      "clearTextShown": false,
       "hasEnemies": true
     },
     "Servants’ Quarters": {
@@ -222,7 +223,7 @@
           "Target": "City Outskirts",
           "stealthCheck": {
             "passText": "You move silently beneath the hedges, slipping past the final guards unnoticed.",
-            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. You’re forced to fight your way through the garden gate."
+            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. They're forced to fight through the courtyard and die, but you make it."
           }
         },
         {
@@ -231,6 +232,7 @@
         }
       ],
       "clearText": "The garden lies eerily still — the enemy patrol has been vanquished.",
+      "clearTextShown": false,
       "hasEnemies": true
     },
     "Stable Yard": {
@@ -250,6 +252,7 @@
         }
       ],
       "clearText": "The scent of hay and panic fills the air. The stables lie eerily still — the enemy patrol has been vanquished.",
+      "clearTextShown": false,
       "hasEnemies": true
     },
     "City Outskirts": {
