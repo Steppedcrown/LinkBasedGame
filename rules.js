@@ -4,6 +4,7 @@ class Start extends Scene {
         this.engine.setTitle(this.engine.storyData.Title); // find the story title
         this.engine.addChoice("Begin the story");
         this.engine.guards = 0; // initialize the guards counter
+        this.engine.totalGuards = 0; // total guards found
         this.engine.maxGuards = 2; // max guards
         this.engine.defeatedEnemies = 0; // initialize the defeated enemies counter
         this.engine.maxEnemies = 2; // max enemy encounters
@@ -87,6 +88,7 @@ class Location extends Scene {
             // Gain or lose guards if the choice has a GainGuards or LoseGuards property
             if (choice.gainGuards) {
                 this.engine.guards++;
+                this.engine.totalGuards++; // increase the total guards counter
                 //console.log(`Guards decreased by ${choice.loseGuards}. Current guards: ${this.engine.guards}`);
             } else if (choice.loseGuards) {
                 if (this.engine.guards > 0) { // if player has guards
@@ -108,8 +110,8 @@ class Location extends Scene {
                         this.engine.show(choice.loseGuards.winText); // otherwise show that they defeated the enemies with only some casualties
                     }
                 }
-            } else if (choice.stealthCheck && choice.Target.hasEnemies) { // if there is a stealth check on current choice and the zone has enemies
-                if (this.engine.guards > 0) { // and player has guards
+            } else if (choice.stealthCheck) { // if there is a stealth check on current choice and the zone has enemies
+                if (this.engine.guards > 0 && choice.Target.hasEnemies) { // and player has guards
                     this.engine.guards--; // lose guards
                     this.engine.show(choice.stealthCheck.failText); // and fail stealth check and fight enemies to escape
                 } else {
@@ -125,7 +127,7 @@ class Location extends Scene {
     endstats() {
         this.engine.show(
             "You have escaped the city with " + this.engine.guards + " guards by your side, abandoning " +
-            (this.engine.maxGuards - this.engine.guards) + " guards in the castle. " +
+            (this.engine.maxGuards - this.engine.totalGuards) + " guards in the castle. " +
             "You defeated " + this.engine.defeatedEnemies + " enemies patrols, leaving " +
             (this.engine.maxEnemies - this.engine.defeatedEnemies) + " to take the castle."
         );

@@ -12,7 +12,7 @@
     {
       "Flag": "readNote",
       "Location": "Grand Archives",
-      "Message": "Shelves reach the vaulted ceiling, packed with forbidden histories. You shudden at the thought of all this knowledge turning to ash at the hands of your invaders. A weathered note slips from between the pages of the tome: “The old kings of the castle harbor a key, used by sneaky servants and spies.”"
+      "Message": "Shelves reach the vaulted ceiling, packed with forbidden histories. You shudder at the thought of all this knowledge turning to ash at the hands of your invaders. A weathered note slips from between the pages of the tome: “The old kings of the castle harbor a key, used by sneaky servants and spies.”"
     },
     {
       "Flag": "hasKey",
@@ -115,7 +115,7 @@
       ]
     },
     "Throne Room": {
-      "Body": "Once a seat of power, now left empty. The sounds of soldiers yelling and swords clashing echo closer with each breath.",
+      "Body": "Once a seat of power, now left empty. The sounds of soldiers yelling and swords clashing draw nearer with each breath.",
       "Choices": [
         {
           "Text": "Step into the Grand Archives",
@@ -128,7 +128,7 @@
       ]
     },
     "Grand Archives": {
-      "Body": "Shelves reach the vaulted ceiling, packed with forbidden histories. You shudden at the thought of all this knowledge turning to ash at the hands of your invaders. A single tome lies suspiciously untouched on a pedestal.",
+      "Body": "Shelves reach the vaulted ceiling, packed with forbidden histories. You shudder at the thought of all this knowledge turning to ash at the hands of your invaders. A single tome lies suspiciously untouched on a pedestal.",
       "Choices": [
         {
           "Text": "Head to the Outdoor Courtyard",
@@ -148,7 +148,7 @@
           "Target": "Armory",
           "stealthCheck": {
             "passText": "You move silently around the fountain, slipping past the patrolling guards unnoticed.",
-            "failText": "A twig snaps. Shouts ring out. Your guards armor clatters. You’re forced to fight your way through the courtyard, but you make it."
+            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. You’re forced to fight your way through the courtyard, but you make it."
           }
         },
         {
@@ -156,7 +156,7 @@
           "Target": "Servants’ Quarters",
           "stealthCheck": {
             "passText": "You move silently around the fountain, slipping past the patrolling guards unnoticed.",
-            "failText": "A twig snaps. Shouts ring out. Your guards armor clatters. You’re forced to fight your way through the courtyard, but you survive."
+            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. You’re forced to fight your way through the courtyard, but you survive."
           }
         },
         {
@@ -168,7 +168,7 @@
       "hasEnemies": true
     },
     "Servants’ Quarters": {
-      "Body": "The scent of old stew lingers in these narrow halls — the forgotten paths of servants and spies alike.",
+      "Body": "The scent of old stew lingers in these narrow halls — the forgotten paths of servants and spies alike. You wonder if they left any secrets hidden in the room.",
       "Choices": [
         {
           "Text": "Head into the Kitchen",
@@ -222,7 +222,7 @@
           "Target": "City Outskirts",
           "stealthCheck": {
             "passText": "You move silently beneath the hedges, slipping past the final guards unnoticed.",
-            "failText": "A twig snaps. Shouts ring out. Your guards armor clatters. You’re forced to fight your way through the garden gate."
+            "failText": "A twig snaps. Shouts ring out. Your guards' armor clatters. You’re forced to fight your way through the garden gate."
           }
         },
         {
@@ -241,7 +241,7 @@
           "Target": "City Outskirts",
           "loseGuards": {
             "winText": "Your guards charge ahead, clearing a bloody path. You ride out with them under a storm of arrows.",
-            "loseText": "Your guards charge ahead, clearing a bloody path. They all die to allow you to slip out under a storm of arrows."
+            "loseText": "Your guards charge ahead, clearing a bloody path. They sacrifice themselves to allow you to slip away under a storm of arrows."
           }
         },
         {
